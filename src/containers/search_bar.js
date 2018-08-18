@@ -1,5 +1,8 @@
-import React, { Component } from 'react';
-
+ import React, { Component } from 'react';
+ import { connect } from 'react-redux';
+ import { bindActionCreators } from 'redux';
+ import { fetchWeather } from '../actions/index';
+ 
 export default class SearchBar extends Component {
   constructor(props) {
   	super(props);
@@ -32,3 +35,10 @@ onFormSubmit(event){
 		);
 	}
 }
+
+
+function mapDispatchtoProps(dispatch) {
+  return bindActionCreators({ fetchWeather}, dispatch)
+}
+
+export default connect(null, mapDispatchtoProps)(SearchBar);
